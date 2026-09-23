@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>دردشة النسر</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="login" class="overlay">
+  <div class="login-card">
+    <div class="logo">🦅</div>
+    <h1>دردشة النسر</h1>
+    <p>ادخل باسم مستعار وابدأ الدردشة</p>
+    <input id="name" maxlength="24" placeholder="اكتب اسمك">
+    <button id="join">دخول إلى الدردشة</button>
+  </div>
+</div>
+
+<div class="app">
+  <header>
+    <div class="brand"><span>🦅</span><div><b>دردشة النسر</b><small><i></i> متصل الآن</small></div></div>
+    <div class="online">👥 <span id="count">0</span></div>
+  </header>
+
+  <main id="messages"></main>
+
+  <form id="form" class="composer">
+    <input id="text" autocomplete="off" maxlength="500" placeholder="اكتب رسالتك..." disabled>
+    <button id="send" disabled aria-label="إرسال">➤</button>
+  </form>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
