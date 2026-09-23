@@ -1,37 +1,222 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>دردشة النسر</title>
-<link rel="stylesheet" href="/style.css">
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>دردشة النسر</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
 </head>
+
 <body>
-<div id="login" class="overlay">
-  <div class="login-card">
-    <div class="logo">🦅</div>
-    <h1>دردشة النسر</h1>
-    <p>ادخل باسم مستعار وابدأ الدردشة</p>
-    <input id="name" maxlength="24" placeholder="اكتب اسمك">
-    <button id="join">دخول إلى الدردشة</button>
+
+  <!-- شاشة تسجيل الدخول -->
+
+  <div id="login" class="login-screen">
+
+    <div class="login-card">
+
+      <div class="logo">
+        🦅
+      </div>
+
+      <h1>دردشة النسر</h1>
+
+      <p class="subtitle">
+        ادخل للدردشة مع الآخرين
+      </p>
+
+      <div
+        id="error"
+        class="error"
+        style="display:none"
+      ></div>
+
+      <!-- الصورة -->
+
+      <div class="avatar-upload">
+
+        <img
+          id="avatarPreview"
+          class="avatar-preview"
+          alt="صورتك"
+        >
+
+        <label
+          for="avatar"
+          class="avatar-button"
+        >
+          📷 اختر صورة
+        </label>
+
+        <input
+          id="avatar"
+          type="file"
+          accept="image/*"
+          hidden
+        >
+
+      </div>
+
+      <!-- الاسم -->
+
+      <input
+        id="name"
+        type="text"
+        maxlength="24"
+        placeholder="اسمك"
+        autocomplete="off"
+      >
+
+      <!-- العمر -->
+
+      <input
+        id="age"
+        type="number"
+        min="13"
+        max="120"
+        placeholder="العمر"
+      >
+
+      <!-- الجنس -->
+
+      <select id="gender">
+
+        <option value="unknown">
+          اختر الجنس
+        </option>
+
+        <option value="male">
+          ذكر
+        </option>
+
+        <option value="female">
+          أنثى
+        </option>
+
+      </select>
+
+      <button
+        id="join"
+        type="button"
+      >
+        دخول إلى الدردشة
+      </button>
+
+    </div>
+
   </div>
-</div>
 
-<div class="app">
-  <header>
-    <div class="brand"><span>🦅</span><div><b>دردشة النسر</b><small><i></i> متصل الآن</small></div></div>
-    <div class="online">👥 <span id="count">0</span></div>
-  </header>
 
-  <main id="messages"></main>
+  <!-- التطبيق -->
 
-  <form id="form" class="composer">
-    <input id="text" autocomplete="off" maxlength="500" placeholder="اكتب رسالتك..." disabled>
-    <button id="send" disabled aria-label="إرسال">➤</button>
-  </form>
-</div>
+  <main class="app">
 
-<script src="/socket.io/socket.io.js"></script>
-<script src="/app.js"></script>
+    <!-- القائمة الجانبية -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-title">
+
+        <div>
+          🦅 دردشة النسر
+        </div>
+
+        <div class="online-count">
+          🟢
+          <span id="count">0</span>
+        </div>
+
+      </div>
+
+      <h3>
+        المتصلون الآن
+      </h3>
+
+      <div id="usersList">
+      </div>
+
+    </aside>
+
+
+    <!-- منطقة الدردشة -->
+
+    <section class="chat">
+
+      <header class="chat-header">
+
+        <div>
+          <strong>
+            الدردشة العامة
+          </strong>
+
+          <small>
+            جميع المتصلين
+          </small>
+        </div>
+
+        <div>
+          🟢
+          <span id="count">0</span>
+        </div>
+
+      </header>
+
+
+      <!-- الرسائل -->
+
+      <div
+        id="messages"
+        class="messages"
+      ></div>
+
+
+      <!-- إرسال الرسالة -->
+
+      <form
+        id="form"
+        class="message-form"
+      >
+
+        <input
+          id="text"
+          type="text"
+          maxlength="500"
+          placeholder="اكتب رسالتك..."
+          autocomplete="off"
+          disabled
+        >
+
+        <button
+          id="send"
+          type="submit"
+          disabled
+        >
+          إرسال
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- Socket.IO -->
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="/app.js"></script>
+
 </body>
+
 </html>
